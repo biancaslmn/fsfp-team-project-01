@@ -67,7 +67,7 @@ viewHideRegister = function() {
 viewShowAuthenticationMessage = function() {
     console.group( "FUNCTION viewShowAuthenticationMessage()" );
 
-    $( "#authentication-message-text" ).text( app.authenticationMessage );
+    $( "#authentication-message-text" ).text( app.firebaseError.message );
     $( "#authentication-message" ).fadeIn();
 
     console.groupEnd();
@@ -132,6 +132,18 @@ viewHideAuthentication = function() {
     console.group( "FUNCTION viewHideAuthentication()" );
 
     $( "#authentication" ).fadeOut();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewShowCharacterProfile()
+***/
+
+viewShowCharacterProfile = function() {
+    console.group( "FUNCTION viewShowCharacterProfile()" );
+
+    // do something
 
     console.groupEnd();
 };

@@ -22,12 +22,15 @@ var APP_STATUS__MESSAGE_LOGIN_ERROR = "MESSAGE_LOGIN_ERROR";
 var APP_STATUS__MESSAGE_LOGIN_ERROR__WAIT_USER = "MESSAGE_LOGIN_ERROR__WAIT_USER";
 var APP_STATUS__MESSAGE_REGISTER_ERROR = "MESSAGE_REGISTER_ERROR";
 var APP_STATUS__MESSAGE_REGISTER_ERROR__WAIT_USER = "MESSAGE_REGISTER_ERROR__WAIT_USER";
+var APP_STATUS__USER_AUTHENTICATED = "USER_AUTHENTICATED";
 var APP_STATUS__MESSAGE_WELCOME = "MESSAGE_WELCOME";
 var APP_STATUS__MESSAGE_WELCOME__WAIT_USER = "MESSAGE_WELCOME__WAIT_USER";
-var APP_STATUS__USER_AUTHENTICATED = "USER_AUTHENTICATED";
-var APP_STATUS__CHARACTER_SELECT = "CHARACTER_SELECT";
-var APP_STATUS__CHARACTER_SELECT__WAIT_USER = "CHARACTER_SELECT__WAIT_USER";
-var APP_STATUS__CHARACTER_SELECT__CHECK_SELECTION = "CHARACTER_SELECT__CHECK_SELECTION";
+var APP_STATUS__CHARACTER_PROFILE = "CHARACTER_PROFILE";
+
+
+
+var APP_STATUS__CHARACTER_PROFILE__WAIT_USER = "CHARACTER_PROFILE__WAIT_USER";
+var APP_STATUS__CHARACTER_PROFILE__CHECK_SELECTION = "CHARACTER_PROFILE__CHECK_SELECTION";
 
 // FSA continue flag
 var FSA_CONTINUE__NO = 0;
@@ -45,7 +48,7 @@ controllerLoginAuthenticate = function( eventType , eventTargetId ) {
     // get data from login form
     var loginEmail = $( "#login-email" ).val();
     var loginPassword = $( "#login-password" ).val();
-    var promise = app.login( loginEmail , loginPassword );
+    var promise = app.firebaseSignIn( loginEmail , loginPassword );
 
     console.log( "promise" , promise );
     console.groupEnd();
@@ -65,7 +68,29 @@ controllerRegisterAuthenticate = function( eventType , eventTargetId ) {
     var registerName = $( "#register-name" ).val();
     var registerEmail = $( "#register-email" ).val();
     var registerPassword = $( "#register-password" ).val();
-    var promise = app.register( registerName , registerEmail , registerPassword );
+    var promise = app.firebaseCreateUser( registerName , registerEmail , registerPassword );
+
+    console.log( "promise" , promise );
+    console.groupEnd();
+    return promise;
+};
+
+
+/*** FUNCTION controllerGetCharacterProfile
+***/
+
+controllerGetCharacterProfile = function( eventType , eventTargetId ) {
+    console.group( "controllerGetCharacterProfile()" );
+    console.logValue( "eventType" , eventType );
+    console.logValue( "eventTargetId" , eventTargetId );
+
+    var promise =
+        app.newCharacterProfile( "ELEVEN" )
+        .then(
+            () => {
+                return app.newCharacterProfile( "MIKE_WHEELER" );
+            }
+        );
 
     console.log( "promise" , promise );
     console.groupEnd();
@@ -132,7 +157,6 @@ controllerStep = function( eventType , eventTargetId ) {
 
                     console.log( "app.status" , app.status );
                     console.groupEnd();
-
                     controllerMain( "promise" , undefined );
                 }
             );
@@ -142,7 +166,7 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__LOGIN__OK
     ) {
-        app.status = APP_STATUS__MESSAGE_WELCOME;
+        app.status = APP_STATUS__USER_AUTHENTICATED;
     }
     else if (
         app.status === APP_STATUS__LOGIN__ERROR
@@ -195,7 +219,6 @@ controllerStep = function( eventType , eventTargetId ) {
 
                     console.log( "app.status" , app.status );
                     console.groupEnd();
-
                     controllerMain( "promise" , undefined );
                 }
             );
@@ -205,8 +228,7 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__REGISTER__OK
     ) {
-
-        app.status = APP_STATUS__MESSAGE_WELCOME;
+        app.status = APP_STATUS__USER_AUTHENTICATED;
     }
     else if (
         app.status === APP_STATUS__REGISTER__ERROR
@@ -229,6 +251,9 @@ controllerStep = function( eventType , eventTargetId ) {
     ) {
         app.status = APP_STATUS__LOGIN;
     }
+    else if ( app.status === APP_STATUS__USER_AUTHENTICATED ) {
+        app.status = APP_STATUS__MESSAGE_WELCOME;
+    }
 
     // FSA welcome message
     else if (
@@ -246,12 +271,32 @@ controllerStep = function( eventType , eventTargetId ) {
     ) {
         viewHideWelcomeMessage();
         viewHideAuthentication();
-        app.status = APP_STATUS__USER_AUTHENTICATED;
+        app.status = APP_STATUS__CHARACTER_PROFILE;
     }
+    else if ( app.status === APP_STATUS__CHARACTER_PROFILE ) {
+        controllerGetCharacterProfile( eventType , eventTargetId )
+            .then(
+                () => {
+                    console.group( ".then()"  );
+
+                    viewShowCharacterProfile();
+                    app.status = APP_STATUS__CHARACTER_PROFILE__WAIT_USER;
+
+                    console.log( "app.status" , app.status );
+                    console.groupEnd();
+                    controllerMain( "promise" , undefined );
+                }
+            );
+
+        flagFsaContinue = FSA_CONTINUE__NO;
+    }
+
+    // FSA character select
     else {
         console.warn( "Invalid FSA condition" );
         flagFsaContinue = FSA_CONTINUE__NO;
     };
+
 
     console.logValue( "app.status" , app.status );
     console.logValue( "flagFsaContinue" , flagFsaContinue );
@@ -299,7 +344,7 @@ handleEvent = function( event ) {
     console.group( "handleEvent()" );
     console.logValue( "event.type" , event.type );
     console.logValue( "event.currentTarget.id" , event.currentTarget.id );
-    
+
     controllerMain( event.type , event.currentTarget.id );
 
     console.groupEnd();
@@ -313,7 +358,7 @@ handleClickWelcomeMessageButton = function( event ) {
     console.group( "handleClickWelcomeMessageButton()" );
     console.logValue( "event.type" , event.type );
     console.logValue( "event.currentTarget.id" , event.currentTarget.id );
-    
+
     controllerMain( event.type , "welcome-message-button" );
 
     console.groupEnd();

@@ -139,7 +139,6 @@ controllerStep = function( eventType , eventTargetId ) {
 
         flagFsaContinue = FSA_CONTINUE__NO;
     }
-    /*
     else if (
         app.status === APP_STATUS__LOGIN__OK
     ) {
@@ -148,18 +147,17 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__LOGIN__ERROR
     ) {
-        console.log( "app.messageLoginError()" );
+        viewShowAuthenticationMessage();
         app.status = APP_STATUS__MESSAGE_LOGIN_ERROR__WAIT_USER;
     }
     else if (
         app.status === APP_STATUS__MESSAGE_LOGIN_ERROR__WAIT_USER &&
         eventType === "click" &&
-        eventTargetId === "message-ok"
+        eventTargetId === "authentication-message-button"
     ) {
-        console.log( "app.messageClose()" );
+        viewHideAuthenticationMessage();
         app.status = APP_STATUS__LOGIN__WAIT_USER;
     }
-    */
     else if (
         app.status === APP_STATUS__LOGIN__WAIT_USER &&
         eventType === "click" &&
@@ -204,7 +202,6 @@ controllerStep = function( eventType , eventTargetId ) {
 
         flagFsaContinue = FSA_CONTINUE__NO;
     }
-    /*
     else if (
         app.status === APP_STATUS__REGISTER__OK
     ) {
@@ -214,18 +211,17 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__REGISTER__ERROR
     ) {
-        console.log( "app.messageLoginError()" );
+        viewShowAuthenticationMessage();
         app.status = APP_STATUS__MESSAGE_REGISTER_ERROR__WAIT_USER;
     }
     else if (
         app.status === APP_STATUS__MESSAGE_REGISTER_ERROR__WAIT_USER &&
         eventType === "click" &&
-        eventTargetId === "message-ok"
+        eventTargetId === "authentication-message-button"
     ) {
-        console.log( "app.messageClose()" );
+        viewHideAuthenticationMessage();
         app.status = APP_STATUS__REGISTER__WAIT_USER;
     }
-    */
     else if (
         app.status === APP_STATUS__REGISTER__WAIT_USER &&
         eventType === "click" &&
@@ -233,23 +229,25 @@ controllerStep = function( eventType , eventTargetId ) {
     ) {
         app.status = APP_STATUS__LOGIN;
     }
-    /*
-    // Welcome screen
+
+    // FSA welcome message
     else if (
         app.status === APP_STATUS__MESSAGE_WELCOME
     ) {
-        console.log( "app.messageWelcome()" );
+        viewHideLogin();
+        viewHideRegister();
+        viewShowWelcomeMessage();
         app.status = APP_STATUS__MESSAGE_WELCOME__WAIT_USER;
     }
     else if (
         app.status === APP_STATUS__MESSAGE_WELCOME__WAIT_USER &&
-        eventType ==== "click" &&
-        eventTargetId === "message-ok"
+        eventType === "click" &&
+        eventTargetId === "welcome-message-button"
     ) {
-        console.log( "app.messageClose()" );
+        viewHideWelcomeMessage();
+        viewHideAuthentication();
         app.status = APP_STATUS__USER_AUTHENTICATED;
     }
-    */
     else {
         console.warn( "Invalid FSA condition" );
         flagFsaContinue = FSA_CONTINUE__NO;
@@ -320,6 +318,9 @@ handleReady = function( event ) {
     $( "#register-submit" ).on( "click" , handleClickSubmit );
     $( "#login-link" ).on( "click" , handleEvent );
     $( "#register-link" ).on( "click" , handleEvent );
+    $( "#authentication-message-button" ).on( "click" , handleEvent );
+    $( "#welcome-message-button" ).on( "click" , handleEvent );
+
     // $( "#game-message" ).on( "click" , handleClick );
     // $( "#game-trivia-answer-0" ).on( "click" , handleClick );
     // $( "#game-trivia-answer-1" ).on( "click" , handleClick );

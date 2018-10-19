@@ -20,6 +20,8 @@ var StrangerThingsApp = function() {
     console.group( "CONSTRUCTOR StrangerThingsApp()" );
 
     this.status = undefined;
+    this.authenticationCode = undefined;
+    this.authenticationMessage = undefined;
 
     console.groupEnd();
 };
@@ -56,6 +58,8 @@ StrangerThingsApp.prototype.login = function( email , password ) {
                             console.group( ".catch()" );
 
                             console.logValue( "error" , error );
+                            app.authenticationCode = error.code;
+                            app.authenticationMessage = error.message;
                             var isLoginOk = false;
 
                             console.logValue( "isLoginOk" , isLoginOk );
@@ -113,6 +117,8 @@ StrangerThingsApp.prototype.register = function( name , email , password ) {
                             console.group( ".catch()" );
 
                             console.logValue( "error" , error );
+                            app.authenticationCode = error.code;
+                            app.authenticationMessage = error.message;
                             var isRegisterOk = false;
 
                             console.logValue( "isRegisterOk" , isRegisterOk );

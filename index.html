@@ -39,40 +39,41 @@
     <script src="assets/script/appController.js" defer></script>
 </head>
 
+<body>
+
     <!-- Form links --->
-
-    <div>
-        <a id="login-link">Log In</a>
+    <div id="authentication">
+        <hr>
+        <p>
+            <a id="login-link">Log In</a>
+        </p>
+        <p>
+            <a id="register-link">Register</a>
+        </p>
     </div>
-    <div>
-        <a id="register-link">Register</a>
-    </div>
-
-    <hr>
 
     <!-- Login form -->
-    <body>
-        <div>
-            <form id="login">
-                <div>
-                    <label id="login-email-label" for="login-email">Email</label>
-                    <input id="login-email" type="email" name="login-email"><br>
-                </div>
-                <div>
-                    <label id="login-password-label" for="login-password">Password</label>
-                    <input id="login-password" type="password" name="login-password"><br>
-                </div>
-                <div>
-                    <input id="login-submit" type="submit" name="login-submit" value="login-submit">
-                </div>
-            </form>
-        </div>
-
+    <div id="login">
         <hr>
+        <form>
+            <div>
+                <label id="login-email-label" for="login-email">Email</label>
+                <input id="login-email" type="email" name="login-email"><br>
+            </div>
+            <div>
+                <label id="login-password-label" for="login-password">Password</label>
+                <input id="login-password" type="password" name="login-password"><br>
+            </div>
+            <div>
+                <input id="login-submit" type="submit" name="login-submit" value="login-submit">
+            </div>
+        </form>
+    </div>
 
     <!-- Register form-->
-    <div>
-        <form id="register">
+    <div id="register">
+        <hr>
+        <form>
             <div>
                 <label id="register-name-label" for="register-name">Your Name</label>
                 <input id="register-name" type="name" name="register-name"><br>
@@ -90,6 +91,27 @@
             </div>
         </form>
     </div>
+
+    <!-- Authentication message-->
+
+    <div id="authentication-message">
+        <hr>
+        <p id="authentication-message-text">
+            autentication-message
+        </p>
+        <input id="authentication-message-button" type="button"  value="OK">
+    </div>
+
+    <!-- Welcome message-->
+
+    <div id="welcome-message">
+        <hr>
+        <p id="welcome-message-text">
+            Welcome
+        </p>
+        <input id="welcome-message-button" type="button"  value="OK">
+    </div>
+
 
     <!-- Internal Javascript -->
     <!-- <script></script> -->

@@ -92,6 +92,20 @@ viewHideAuthenticationMessage = function() {
 viewShowWelcomeMessage = function() {
     console.group( "FUNCTION viewShowWelcomeMessage()" );
 
+    $( "#welcome-message" )
+        .dialog(
+            {
+                modal : true,
+                buttons : {
+                    YES : handleClickWelcomeMessageButton
+                    /*
+                    OK : function() {
+                        $( this ).dialog( "close" );
+                    }
+                    */
+                }
+            }
+        );
     $( "#welcome-message" ).fadeIn();
 
     console.groupEnd();
@@ -104,7 +118,8 @@ viewShowWelcomeMessage = function() {
 viewHideWelcomeMessage = function() {
     console.group( "FUNCTION viewHideWelcomeMessage()" );
 
-    $( "#welcome-message" ).fadeOut();
+    // $( "#welcome-message" ).fadeOut();
+    $( "#welcome-message" ).dialog( "close" );
 
     console.groupEnd();
 };

@@ -11,7 +11,8 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
-
+    <script src="assets/jquery-ui/jquery-ui.js" defer></script>
+     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script> -->
@@ -27,6 +28,8 @@
     <!-- External CSS -->
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/style/reset.css"> -->
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/style/style.css"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/jquery-ui/jquery-ui.css">
+
 
     <!-- Internal Javascript -->
     <!-- <script></script> -->
@@ -104,6 +107,7 @@
 
     <!-- Welcome message-->
 
+    <!--
     <div id="welcome-message">
         <hr>
         <p id="welcome-message-text">
@@ -111,7 +115,13 @@
         </p>
         <input id="welcome-message-button" type="button"  value="OK">
     </div>
+    -->
 
+    <div id="welcome-message" title="Welcome Stranger" style="width: auto; min-height: 0px; max-height: 100px; height: 100px;">
+        <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>You have succesfully logged in!.</p>
+        <p>Welcome Stranger. <b>This is the Line Reaper. Do you dare to enter?</b>.</p>
+    </div>
 
     <!-- Internal Javascript -->
     <!-- <script></script> -->

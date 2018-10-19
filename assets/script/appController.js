@@ -299,8 +299,22 @@ handleEvent = function( event ) {
     console.group( "handleEvent()" );
     console.logValue( "event.type" , event.type );
     console.logValue( "event.currentTarget.id" , event.currentTarget.id );
-
+    
     controllerMain( event.type , event.currentTarget.id );
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION handleClickWelcomeMessageButton()
+***/
+
+handleClickWelcomeMessageButton = function( event ) {
+    console.group( "handleClickWelcomeMessageButton()" );
+    console.logValue( "event.type" , event.type );
+    console.logValue( "event.currentTarget.id" , event.currentTarget.id );
+    
+    controllerMain( event.type , "welcome-message-button" );
 
     console.groupEnd();
 };
@@ -319,7 +333,7 @@ handleReady = function( event ) {
     $( "#login-link" ).on( "click" , handleEvent );
     $( "#register-link" ).on( "click" , handleEvent );
     $( "#authentication-message-button" ).on( "click" , handleEvent );
-    $( "#welcome-message-button" ).on( "click" , handleEvent );
+    // $( "#welcome-message-button" ).on( "click" , handleEvent );
 
     // $( "#game-message" ).on( "click" , handleClick );
     // $( "#game-trivia-answer-0" ).on( "click" , handleClick );

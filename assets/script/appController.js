@@ -392,4 +392,13 @@ handleReady = function( event ) {
 };
 
 
+function onYouTubeIframeAPIReady() {
+    console.group( "FUNCTION handleReady()" );
+
+    console.warn( "YouTube is ready" );
+
+    console.groupEnd();
+};
+
+
 $( handleReady );

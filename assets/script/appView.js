@@ -149,6 +149,48 @@ viewShowCharacterProfile = function() {
 };
 
 
+/*** FUNCTION viewShowYoutubeVideo()
+***/
+
+viewShowYoutubeVideo = function( youtubeVideoId ) {
+    console.group( "FUNCTION viewShowYoutubeVideo()" );
+    console.logValue( "youtubeVideoId" , youtubeVideoId );
+
+    var youtubePlayerOptions = {
+        height : '390' ,
+        width : '640' ,
+        videoId : youtubeVideoId ,
+        playerVars : {
+            autoplay : 1 ,
+            controls : 0 ,
+            disablekb : 1 ,
+            end : 3 ,
+            loop : 1
+        }
+    };
+    var youtubePlayer = new YT.Player( 'youtube-player' , youtubePlayerOptions );
+
+    console.logValue( "youtubePlayer" , youtubePlayer );
+    console.groupEnd();
+    return youtubePlayer;
+};
+
+
+/*** FUNCTION viewStopYoutubeVideo()
+***/
+
+viewStopYoutubeVideo = function( youtubePlayer ) {
+    console.group( "FUNCTION viewStopYoutubeVideo()" );
+    console.logValue( "youtubePlayer" , youtubePlayer );
+
+    youtubePlayer.destroy();
+
+    console.logValue( "youtubePlayer" , youtubePlayer );
+    console.groupEnd();
+    return youtubePlayer;
+};
+
+
 /*** FUNCTION viewUpdateUI()
 ***/
 

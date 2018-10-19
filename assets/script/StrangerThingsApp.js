@@ -34,7 +34,6 @@ var StrangerThingsApp = function() {
     this.API_URL_PARAMETER__GIPHY[ "ELEVEN" ] = { api_key : this.API_KEY__GIPHY };
     this.API_URL_PARAMETER__GIPHY[ "MIKE_WHEELER" ] = { api_key : this.API_KEY__GIPHY };
     this.API_METHOD__GIPHY__AS_SIMPLE_JSON = "GET";
-    this.giphyImageAS = {};
 
     // Wikia API
     this.API_HOST__WIKIA = "strangerthings.wikia.com";
@@ -44,6 +43,10 @@ var StrangerThingsApp = function() {
     this.API_URL_PARAMETER__WIKIA[ "ELEVEN" ] = { id : 90 };
     this.API_URL_PARAMETER__WIKIA[ "MIKE_WHEELER" ] = { id : 130 };
     this.API_METHOD__WIKIA__AS_SIMPLE_JSON = "GET";
+
+    // YouTube API
+
+    // character profile
     this.characterProfileTextAS = {};    // [ string ]
     this.characterProfileImageAS = {};    // [ { src , width , height } ]
     this.characterProfileImageAS[ "ELEVEN" ] = {
@@ -54,32 +57,117 @@ var StrangerThingsApp = function() {
         src : "" ,
         width : "" ,
         height : "" };
-    /*
-    this.wikiaCharacterProfile( "ELEVEN" )
-        .then(
-            ( ajaxResponse ) => {
-                console.group( ".then()"  );
-                console.logValue( "ajaxResponse" , ajaxResponse );
 
-                this.characterProfileTextAS[ "ELEVEN" ] = ajaxResponse;
+    // story images
+    this.storyGiphyImageAS = {};
 
-                console.groupEnd();
-            }
-        );
-    this.wikiaCharacterProfile( "MIKE_WHEELER" )
-        .then(
-            ( ajaxResponse ) => {
-                console.group( ".then()"  );
-                console.logValue( "ajaxResponse" , ajaxResponse );
+    // story video
+    this.storyYoutubeVideoAS = {};
+    this.storyYoutubeVideoAS[ "0" ] = "vPTZmu_YX1Q";
+    this.storyYoutubeVideoAS[ "1" ] = "AYeEcPhugGw";
 
-                this.characterProfileTextAS[ "MIKE_WHEELER" ] = ajaxResponse;
-
-                console.groupEnd();
-            }
-        );
-    */
-
-    // Youtube API
+    // story
+    this.storyAS = {};
+    this.storyAS[ "ELEVEN" ] = [
+        // 0
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header : "Story 0" ,
+            text : "start" ,
+            choices : [ 1 ]
+        } ,
+        // 1
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header : "Story 1" ,
+            text : "text" ,
+            choices : [ 2 , 3 ]
+        } ,
+        // 2
+        {
+            mediaType : "giphy" ,
+            mediaSrc : "giphyId" ,
+            header : "Story 2" ,
+            text : "text" ,
+            choices : [ 3 , 4 ]
+        } ,
+        // 3
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header: "Story 3" ,
+            text : "bad ending" ,
+            choices : [ 5 ]
+        } ,
+        // 4
+        {
+            mediaType : "YouTube" ,
+            mediaSrc : "youtubeId" ,
+            header : "Story 4" ,
+            text : "good ending" ,
+            choices : [ 5 ]
+        } ,
+        // 5
+        {
+            mediaType : "YouTube" ,
+            mediaSrc : "youtubeId" ,
+            header : "Story 5" ,
+            text : "end" ,
+            choices : []
+        }
+    ]
+    this.storyAS[ "MIKE_WHEELER" ] = [
+        // 0
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header : "Story 0" ,
+            text : "start" ,
+            choices : [ 1 ]
+        } ,
+        // 1
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header : "Story 1" ,
+            text : "text" ,
+            choices : [ 2 , 3 ]
+        } ,
+        // 2
+        {
+            mediaType : "giphy" ,
+            mediaSrc : "giphyId" ,
+            header : "Story 2" ,
+            text : "text" ,
+            choices : [ 3 , 4 ]
+        } ,
+        // 3
+        {
+            mediaType : "image" ,
+            mediaSrc : "imageSrc" ,
+            header: "Story 3" ,
+            text : "bad ending" ,
+            choices : [ 5 ]
+        } ,
+        // 4
+        {
+            mediaType : "YouTube" ,
+            mediaSrc : "youtubeId" ,
+            header : "Story 4" ,
+            text : "good ending" ,
+            choices : [ 5 ]
+        } ,
+        // 5
+        {
+            mediaType : "YouTube" ,
+            mediaSrc : "youtubeId" ,
+            header : "Story 5" ,
+            text : "end" ,
+            choices : []
+        }
+    ]
 
     console.logValue( "this" , this );
     console.log( "[END] CONSTRUCTOR StrangerThingsApp" );

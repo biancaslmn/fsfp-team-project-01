@@ -51,6 +51,7 @@
 
     <!-- External Javascript -->
     <!-- <script src="assets/script/jdcUtil.js" async></script> -->
+    <script src="assets/script/snowFlake.js" defer></script>
     <script src="assets/script/jdcUtil.js" defer></script>
     <script src="assets/script/StrangerThingsApp.js" defer></script>
     <script src="assets/script/appView.js" defer></script>
@@ -58,7 +59,6 @@
 </head>
 
 <body>
-
     <!-- Form links --->
     <!-- <div id="authentication">
         <hr>
@@ -145,6 +145,10 @@
     <!-- Authentication Form -->
     <div id="authentication" class="container">
 
+        <section class="xmas">
+        <canvas id="xmas"></canvas>
+        </section>
+
         <!--Liner Reaper title-->
         <div class="st">
             <div class="st-top">
@@ -168,7 +172,7 @@
         -->
 
                 <!-- Modal content-->
-                <div class="modal-content">
+                <div class="modal-content zindex3">
                     <div class="modal-header">
 
                         <!--Form container and background-->
@@ -288,6 +292,11 @@
 
     <div id="game">
 
+        <section class="xmas">
+        <canvas id="xmas"></canvas>
+        </section>
+
+
         <!-- Header --->
         <div class="st">
             <div class="st-top">
@@ -315,7 +324,7 @@
         </div>
 
         <!-- Character Profiles --->
-        <div class="col-xl-9 col-12 col-s-12 container">
+        <div class="col-xl-9 col-12 col-s-12 container zindex3">
             <div id="main-container">
                 <h2 class="demoHeaders"></h2>
                 <div id="accordion" class="charactersIntro">
@@ -349,7 +358,12 @@
 
     <!-- Trivia -->
     <div id="trivia">
-        <div class="triviaPage">
+        <section class="xmas">
+        <canvas id="xmas"></canvas>
+        </section>
+
+
+        <div class="triviaPage zindex3">
             <div class="background"></div>
             <div id="dialog" title="Question # 1">
                 <p id="triviaText" class="triviaText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo red.</p>

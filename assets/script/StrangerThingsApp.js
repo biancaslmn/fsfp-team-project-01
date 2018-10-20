@@ -67,6 +67,8 @@ var StrangerThingsApp = function() {
     this.storyYoutubeVideoAS[ "1" ] = "AYeEcPhugGw";
 
     // story
+    this.currentStory;
+    this.currentStoryNode = undefined;
     this.storyAS = {};
     this.storyAS[ "ELEVEN" ] = [
         // 0
@@ -498,57 +500,29 @@ StrangerThingsApp.prototype.newGiphyImage = function( index ) {
 };
 
 
-
-/***
-
-strangerThingsApp = new StrangerThingsApp();
-app.firebaseSignIn( "jabeldmc@gmail.com" , "aa" );
-app.firebaseSignIn( "jabeldmc@gmail.com" , "jabeldmcjabeldmc" );
-app.firebaseCreateUser( "jdcSeiken@gmail.com" , "1234567890" );
-app.firebaseCredentials.user.displayName;
-
-strangerThingsApp = new StrangerThingsApp();
-strangerThingsApp.newGiphyImage( "ELEVEN" );
-strangerThingsApp.giphyImageAS[ "ELEVEN" ];
-
-strangerThingsApp.newGiphyImage( "ELEVEN" )
-    .then(
-        () => {
-            return strangerThingsApp.newGiphyImage( "MIKE_WHEELER" );
-        }
-    )
-    .then(
-        () => {
-            console.log( "END" );
-        }
-    );
+/*** FUNCTION storyStart()
 ***/
 
+StrangerThingsApp.prototype.storyStart = function( storyIndex ) {
+    console.group( "FUNCTION StrangerThingsApp.storyStart()" );
+    console.logValue( "storyIndex" , storyIndex );
 
-
-/*** FUNCTION newCharacterA()
-***/
-
-/*
-StrangerThingsApp.prototype.newCharacterA = function() {
-    console.group( "FUNCTION StrangerThingsApp.register()" );
-
-    var characterA = [];
-
-    // eleven
-    var character = new StrangerThingsCharacter(
-        "eleven" ,
-        null ,
-        "assets/images/character-eleven.png"
-        );
-
-    // Fulanito de Tal
-    var character = new StrangerThingsCharacter(
-        "Fulanito de Tal" ,
-        null ,
-        "assets/images/character-fulanito-de-tal.png"
-        );
+    this.currentStory = this.storyAS[ storyIndex ];
+    this.currentStoryNode = this.currentStory[ 0 ];
 
     console.groupEnd();
-}
-*/
+};
+
+
+/*** FUNCTION storyNext()
+***/
+
+StrangerThingsApp.prototype.storyNext = function( choiceIndex ) {
+    console.group( "FUNCTION StrangerThingsApp.storyNext()" );
+    console.logValue( "choiceIndex" , choiceIndex );
+
+    var nextStoryNodeIndex = this.currentStoryNode.choices[ choiceIndex ];
+    this.currentStoryNode = this.currentStory[ nextStoryNodeIndex ];
+
+    console.groupEnd();
+};

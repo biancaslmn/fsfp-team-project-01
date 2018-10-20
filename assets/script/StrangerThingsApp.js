@@ -28,10 +28,22 @@ var StrangerThingsApp = function() {
     this.API_HOST__GIPHY = "api.giphy.com";
     this.API_KEY__GIPHY = "O4Rolb03RAK6SiFmndG6Yxs0SXhhmslq";
     this.API_ENDPOINT__GIPHY__GIF_ID = {};
-    this.API_ENDPOINT__GIPHY__GIF_ID[ "ELEVEN" ] = "/v1/gifs/vijrOPnOo9RVC";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "3ohhwhjxmrQwLXJFgk" ] = "/v1/gifs/3ohhwhjxmrQwLXJFgk";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "PKjNAlrpj1iqA" ] = "/v1/gifs/PKjNAlrpj1iqA";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "l1J9qzPD7ziXWQybK" ] = "/v1/gifs/l1J9qzPD7ziXWQybK";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "3ohhwoyHMhQPbb23oA" ] = "/v1/gifs/3ohhwoyHMhQPbb23oA";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "l1J9IWqrSnr7yFDhe" ] = "/v1/gifs/l1J9IWqrSnr7yFDhe";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "l1J9MiKZYATmANhFm" ] = "/v1/gifs/l1J9MiKZYATmANhFm";
+    this.API_ENDPOINT__GIPHY__GIF_ID[ "l1J9KqKcpnG6ychfq" ] = "/v1/gifs/l1J9KqKcpnG6ychfq";
     this.API_ENDPOINT__GIPHY__GIF_ID[ "MIKE_WHEELER" ] = "/v1/gifs/vijrOPnOo9RVC";
     this.API_URL_PARAMETER__GIPHY = {};
-    this.API_URL_PARAMETER__GIPHY[ "ELEVEN" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "3ohhwhjxmrQwLXJFgk" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "PKjNAlrpj1iqA" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "l1J9qzPD7ziXWQybK" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "3ohhwoyHMhQPbb23oA" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "l1J9IWqrSnr7yFDhe" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "l1J9MiKZYATmANhFm" ] = { api_key : this.API_KEY__GIPHY };
+    this.API_URL_PARAMETER__GIPHY[ "l1J9KqKcpnG6ychfq" ] = { api_key : this.API_KEY__GIPHY };
     this.API_URL_PARAMETER__GIPHY[ "MIKE_WHEELER" ] = { api_key : this.API_KEY__GIPHY };
     this.API_METHOD__GIPHY__AS_SIMPLE_JSON = "GET";
 
@@ -70,55 +82,60 @@ var StrangerThingsApp = function() {
     // story
     this.currentStory;
     this.currentStoryNode = undefined;
+    this.currentStoryNodeIndex = undefined;
     this.storyAS = {};
     this.storyAS[ "ELEVEN" ] = [
         // 0
         {
-            mediaType : "image" ,
-            mediaSrc : "imageSrc" ,
+            mediaType : "giphy" ,
+            mediaSrc : "3ohhwhjxmrQwLXJFgk" ,
             header : "Story 0" ,
-            text : "start" ,
-            choices : [ 1 ]
+            text : "My head is shaved, I am wearing a hospital gown and I am ravenously hungry. I see a diner, which is" ,
+            answers: [
+                "Benny’s" ,
+                "Bob’s" ,
+                "Danny’s"
+            ] ,
+            correctAnswerIndex : 0
         } ,
         // 1
         {
-            mediaType : "image" ,
-            mediaSrc : "imageSrc" ,
+            mediaType : "giphy" ,
+            mediaSrc : "PKjNAlrpj1iqA" ,
             header : "Story 1" ,
-            text : "text" ,
-            choices : [ 2 , 3 ]
+            text : "Benny called for social workers to come and pick me up. But instead of the social workers, armed agents arrived, I call them ‘bad people’; the kill him. I had a chance to escape. I met a group of boys. They offered me to stay at…" ,
+            answers: [
+                "Mike’s home" ,
+                "Dustin’s home" ,
+                "Lucas’s home"
+            ] ,
+            correctAnswerIndex : 0
         } ,
         // 2
         {
             mediaType : "giphy" ,
-            mediaSrc : "giphyId" ,
+            mediaSrc : "l1J9qzPD7ziXWQybK" ,
             header : "Story 2" ,
-            text : "text" ,
-            choices : [ 3 , 4 ]
+            text : "Mike decided to hide me from his mom.  He put me into a dark closet. I was scared and started having flashbacks of being dragged into a dark cell at…" ,
+            answers : [
+                "Hawkins Laboratory" ,
+                "Bernner and co Laboratory" ,
+                "Laboratory of  secret science"
+            ] ,
+            correctAnswerIndex : 0
         } ,
         // 3
         {
-            mediaType : "image" ,
-            mediaSrc : "imageSrc" ,
+            mediaType : "giphy" ,
+            mediaSrc : "3ohhwoyHMhQPbb23oA" ,
             header: "Story 3" ,
-            text : "bad ending" ,
-            choices : [ 5 ]
-        } ,
-        // 4
-        {
-            mediaType : "YouTube" ,
-            mediaSrc : "youtubeId" ,
-            header : "Story 4" ,
-            text : "good ending" ,
-            choices : [ 5 ]
-        } ,
-        // 5
-        {
-            mediaType : "YouTube" ,
-            mediaSrc : "youtubeId" ,
-            header : "Story 5" ,
-            text : "end" ,
-            choices : []
+            text : "The boys know about my power and  they want me to help them find their friend, Will. I figured out how to use the boys’ walkie-talkies to find him. When I connected with him, I could hear him singing" ,
+            answers : [
+                "«Should I Stay or Should I Go»" ,
+                "«Don’t Stop Believin»" ,
+                "«Somewhere Over the Rainbow»"
+            ] ,
+            correctAnswerIndex : 0
         }
     ]
     this.storyAS[ "MIKE_WHEELER" ] = [
@@ -494,7 +511,7 @@ StrangerThingsApp.prototype.newGiphyImage = function( index ) {
                             console.group( "CONSTRUCTOR .then()" );
 
                             console.logValue( "ajaxResponse" , ajaxResponse );
-                            strangerThingsApp.giphyImageAS[ index ] = ajaxResponse.data.images.original_mp4;
+                            strangerThingsApp.storyGiphyImageAS[ index ] = ajaxResponse.data.images.original;
 
                             console.groupEnd();
                             resolve();

@@ -26,11 +26,17 @@ var APP_STATUS__USER_AUTHENTICATED = "USER_AUTHENTICATED";
 var APP_STATUS__MESSAGE_WELCOME = "MESSAGE_WELCOME";
 var APP_STATUS__MESSAGE_WELCOME__WAIT_USER = "MESSAGE_WELCOME__WAIT_USER";
 var APP_STATUS__CHARACTER_PROFILE = "CHARACTER_PROFILE";
-
-
-
 var APP_STATUS__CHARACTER_PROFILE__WAIT_USER = "CHARACTER_PROFILE__WAIT_USER";
-var APP_STATUS__CHARACTER_PROFILE__CHECK_SELECTION = "CHARACTER_PROFILE__CHECK_SELECTION";
+// var APP_STATUS__CHARACTER_PROFILE__CHECK_SELECTION = "CHARACTER_PROFILE__CHECK_SELECTION";
+var APP_STATUS__TRIVIA__START = "TRIVIA__START";
+var APP_STATUS__TRIVIA__QUESTION = "TRIVIA__QUESTION";
+var APP_STATUS__TRIVIA__WAIT_USER = "TRIVIA__WAIT_USER";
+var APP_STATUS__TRIVIA__AFTER_LAST_QUESTION = "TRIVIA__AFTER_LAST_QUESTION";
+var APP_STATUS__TRIVIA__END__GOOD = "TRIVIA__END__GOOD";
+var APP_STATUS__TRIVIA__END__BAD = "TRIVIA__END__BAD";
+var APP_STATUS__TRIVIA__END = "TRIVIA__END";
+var APP_STATUS__TRIVIA__END__WAIT_USER = "TRIVIA__END__WAIT_USER";
+
 
 // FSA continue flag
 var FSA_CONTINUE__NO = 0;
@@ -94,6 +100,53 @@ controllerGetCharacterProfile = function( eventType , eventTargetId ) {
         .then(
             () => {
                 return app.newCharacterProfile( "MIKE_WHEELER" );
+            }
+        );
+
+    console.log( "promise" , promise );
+    console.groupEnd();
+    return promise;
+};
+
+
+/*** FUNCTION controllerGetGiphyImage
+***/
+
+controllerGetGiphyImage = function( eventType , eventTargetId ) {
+    console.group( "controllerGetGiphyImage()" );
+    console.logValue( "eventType" , eventType );
+    console.logValue( "eventTargetId" , eventTargetId );
+
+    var promise =
+        app.newGiphyImage( "3ohhwhjxmrQwLXJFgk" )
+        .then(
+            () => {
+                return app.newGiphyImage( "PKjNAlrpj1iqA" )
+            }
+        )
+        .then(
+            () => {
+                return app.newGiphyImage( "l1J9qzPD7ziXWQybK" )
+            }
+        )
+        .then(
+            () => {
+                return app.newGiphyImage( "3ohhwoyHMhQPbb23oA" )
+            }
+        )
+        .then(
+            () => {
+                return app.newGiphyImage( "l1J9IWqrSnr7yFDhe" )
+            }
+        )
+        .then(
+            () => {
+                return app.newGiphyImage( "l1J9MiKZYATmANhFm" )
+            }
+        )
+        .then(
+            () => {
+                return app.newGiphyImage( "l1J9KqKcpnG6ychfq" )
             }
         );
 
@@ -295,6 +348,91 @@ controllerStep = function( eventType , eventTargetId ) {
 
         flagFsaContinue = FSA_CONTINUE__NO;
     }
+    else if (
+        app.status === APP_STATUS__CHARACTER_PROFILE__WAIT_USER &&
+        eventType === "click" &&
+        eventTargetId === "eleven-profile-button"
+    ) {
+        app.currentStory = app.storyAS[ "ELEVEN" ];
+        app.currentStoryNodeIndex = -1;
+        app.status = APP_STATUS__TRIVIA__START;
+    }
+    else if ( app.status === APP_STATUS__TRIVIA__START ) {
+        viewHideCharacterProfile();
+        controllerGetGiphyImage( eventType , eventTargetId )
+            .then(
+                () => {
+                    console.group( ".then()"  );
+
+                    app.status = APP_STATUS__TRIVIA__QUESTION;
+
+                    console.log( "app.status" , app.status );
+                    console.groupEnd();
+                    controllerMain( "promise" , undefined );
+                }
+            );
+
+        flagFsaContinue = FSA_CONTINUE__NO;
+    }
+    else if ( app.status === APP_STATUS__TRIVIA__QUESTION ) {
+        app.currentStoryNodeIndex++;
+        app.currentStoryNode = app.currentStory[ app.currentStoryNodeIndex ];
+        console.logValue( "app.currentStoryNodeIndex" , app.currentStoryNodeIndex );
+        console.logValue( "app.currentStoryNode" , app.currentStoryNode );
+
+        viewShowTrivia();
+
+        app.status = APP_STATUS__TRIVIA__WAIT_USER;
+        flagFsaContinue = FSA_CONTINUE__NO;
+    }
+    else if (
+        app.status === APP_STATUS__TRIVIA__WAIT_USER &&
+        eventType === "click" &&
+        (
+            eventTargetId === "answer-0" ||
+            eventTargetId === "answer-1" ||
+            eventTargetId === "answer-2"
+            )
+    ) {
+        // check answer
+        console.logValue( "app.currentStoryNodeIndex" , app.currentStoryNodeIndex );
+        console.logValue( "app.currentStory.length" , app.currentStory.length );
+
+        if ( app.currentStoryNodeIndex === ( app.currentStory.length - 1 ) ) {
+            app.status = APP_STATUS__TRIVIA__AFTER_LAST_QUESTION;
+        }
+        else {
+            app.status = APP_STATUS__TRIVIA__QUESTION;
+        }
+    }
+    /*
+    else if ( app.status === APP_STATUS__TRIVIA__AFTER_LAST_QUESTION ) {
+        // check if good end or not
+        app.status = APP_STATUS__TRIVIA__END__GOOD;
+        // or
+        app.status = APP_STATUS__TRIVIA__END__BAD;
+    }
+    else if ( app.status === APP_STATUS__TRIVIA__END__GOOD ) {
+        // check if good end or not
+        app.status = APP_STATUS__TRIVIA__END;
+    }
+    else if ( app.status === APP_STATUS__TRIVIA__END__BAD ) {
+        // check if good end or not
+        app.status = APP_STATUS__TRIVIA__END;
+    }
+    else if ( app.status === APP_STATUS__TRIVIA__END ) {
+        // check if good end or not
+        app.status = APP_STATUS__TRIVIA__END__WAIT_USER;
+    }
+    else if (
+        app.status === APP_STATUS__TRIVIA__END__WAIT_USER &&
+        eventType = "click" &&
+        eventTargetId = "start-over"
+     ) {
+        // check if good end or not
+        app.status = APP_STATUS__CHARACTER_PROFILE;
+    }
+    */
 
     // FSA character select
     else {
@@ -383,6 +521,7 @@ handleReady = function( event ) {
     $( "#login-form-link" ).on( "click" , handleEvent );
     $( "#register-form-link" ).on( "click" , handleEvent );
     $( "#authentication-message-button" ).on( "click" , handleEvent );
+    $( "#eleven-profile-button" ).on( "click" , handleEvent );
     // $( "#welcome-message-button" ).on( "click" , handleEvent );
 
     // $( "#game-message" ).on( "click" , handleClick );

@@ -10,6 +10,7 @@ viewInitializeUI = function() {
     $( "#authentication-message" ).hide();
     $( "#welcome-message" ).hide();
     $( "#game" ).hide();
+    $( "#trivia" ).hide();
 
     console.groupEnd();
 };
@@ -225,7 +226,69 @@ viewShowCharacterProfile = function() {
 viewHideCharacterProfile = function() {
     console.group( "FUNCTION viewHideCharacterProfile()" );
 
-    $( "#accordion" ).fadeOut();
+    $( "#game" ).fadeOut();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewShowTrivia()
+***/
+
+viewShowTrivia = function() {
+    console.group( "FUNCTION viewShowTrivia()" );
+
+    $( "#trivia-media" ).attr( "src" , app.storyGiphyImageAS[ app.currentStoryNode.mediaSrc ].url );
+    $( "#triviaText" ).text( app.currentStoryNode.text );
+    $( "#dialog" )
+        .dialog(
+            {
+                autoOpen : false ,
+                width : 400 ,
+                buttons : [
+                    {
+                        id : "answer-0" ,
+                        text : app.currentStoryNode.answers[ 0 ] ,
+                        click : function() {
+                            // $( this ).dialog( "close" );
+                        }
+                    } ,
+                    {
+                        id : "answer-1" ,
+                        text : app.currentStoryNode.answers[ 1 ] ,
+                        click : function() {
+                            // $( this ).dialog( "close" );
+                        }
+                    } ,
+                    {
+                        id : "answer-2" ,
+                        text : app.currentStoryNode.answers[ 2 ] ,
+                        click : function() {
+                            // $( this ).dialog( "close" );
+                        }
+                    }
+                ]
+            }
+        );
+    $( "#dialog" ).dialog( "open" );
+    // $( "#ui-id-6" ).attr( "title" , ( "Question #" + ( app.currentStoryNodeIndex + 1 ).toString() ) );
+    $( "#ui-id-6" ).text( "Question #" + ( app.currentStoryNodeIndex + 1 ).toString() );
+    $( "#answer-0" ).on( "click" , handleEvent );
+    $( "#answer-1" ).on( "click" , handleEvent );
+    $( "#answer-2" ).on( "click" , handleEvent );
+    $( "#trivia" ).fadeIn();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewHideTrivia()
+***/
+
+viewHideTrivia = function() {
+    console.group( "FUNCTION viewHideTrivia()" );
+
+    $( "#trivia" ).fadeOut();
 
     console.groupEnd();
 };

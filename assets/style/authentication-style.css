@@ -10,10 +10,10 @@ body {
   text-align: center;
   }
 /*Login/Register form container*/
-#regContainer{
+#authentication #regContainer{
   margin-top: 3%;
 }
-.panel-login {/*the panel of the form*/
+#authentication .panel-login {/*the panel of the form*/
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -22,7 +22,7 @@ body {
   box-shadow: 0px 0px 40px 8px black;
 }
 /*GENERAL FORM DISPLAY*/
-form#login-form,form#register-form{
+#authentication form#login-form,form#register-form{
   max-width: 265px;
   margin: 0 auto;
   display: flex;
@@ -30,11 +30,11 @@ form#login-form,form#register-form{
   align-items: flex-end;
 }
 /*push submission button to the right side*/
-.form-group.submission{
+#authentication .form-group.submission{
   justify-content: flex-end;
 }
 /* FORM HEADERS*/
-.row.headerBut {/*container for headers of the form*/
+#authentication .row.headerBut {/*container for headers of the form*/
   max-width: 265px;
   margin: 0 auto;
   text-align: center;
@@ -42,7 +42,7 @@ form#login-form,form#register-form{
   justify-content: space-between;
 }
 
-.headerBut a{ /*set header for the form*/
+#authentication .headerBut a{ /*set header for the form*/
   text-decoration: none;
   font-weight: bold;
   font-size: 28px;
@@ -52,17 +52,17 @@ form#login-form,form#register-form{
 }
 /*INPUTS CONTAINER*/
 /*display for inputs and labels*/
-.form-group {
+#authentication .form-group {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
 }
 /*style for default colors of the form inputs*/
-.form-group input,
-.form-group input:-webkit-autofill,
-.form-group textarea:-webkit-autofill,
-.form-group select:-webkit-autofill {
+#authentication .form-group input,
+#authentication .form-group input:-webkit-autofill,
+#authentication .form-group textarea:-webkit-autofill,
+#authentication .form-group select:-webkit-autofill {
   background-color: black;
   height: 28px;
   line-height: 28px;
@@ -72,17 +72,18 @@ form#login-form,form#register-form{
   transition: all 0.1s linear;
 }
 /*re-style default style for input fillings*/
-.form-group textarea:focus,
-.form-group input:focus,
-.form-group input[type]:focus,
-.form-group .uneditable-input:focus {
+#authentication .form-group textarea:focus,
+#authentication .form-group input:focus,
+#authentication .form-group input[type]:focus,
+#authentication .form-group .uneditable-input:focus {
   border-color: rgba(247, 244, 245, .8);
   box-shadow: 0 1px 1px rgba(247, 244, 245, 0.75) inset, 0 0 8px rgba(247, 244, 245, 0.6);
   outline: 0 none;
 }
 /*FORM SUBMISSION FIELD*/
 /*form's buttons*/
-.form-group input.btn-login, .form-group input.btn-register {
+#authentication .form-group input.btn-login,
+#authentication .form-group input.btn-register {
   outline: none;
   font-size: 14px;
   height: auto;
@@ -91,36 +92,36 @@ form#login-form,form#register-form{
   text-transform: uppercase;
   transition: background-color 1.5s;
 }
-.btn-login{padding: 8px 18.2px;}
-.btn-register{padding: 8px 32.78px;}
+#authentication .btn-login{padding: 8px 18.2px;}
+#authentication .btn-register{padding: 8px 32.78px;}
 
 /*transition effect for buttons*/
-.btn-login:hover,
-.btn-login:focus,
-.btn-register:hover,
-.btn-register:focus {
+#authentication .btn-login:hover,
+#authentication .btn-login:focus,
+#authentication .btn-register:hover,
+#authentication .btn-register:focus {
   color: #fff;
   background-color: #AC010F;
   border-color: #000;
 }
 
  @media only screen and (max-width: 640px){
-  .st {max-width: 228px;font-size: 45px;margin-top: 4rem;}
-  .st-bound-full{
+  #authentication .st {max-width: 228px;font-size: 45px;margin-top: 4rem;}
+  #authentication .st-bound-full{
     margin-left: 0;
     margin-bottom: 15px;
   }
-  .st-stranger-l {font-size: 4rem; letter-spacing: 0px;}
-  .st-stranger-i {letter-spacing: 3px;}
-  .st-stranger-n, .st-stranger-e {letter-spacing: 0px;}
-  .st-things-p {letter-spacing: 3px;}
-  .st-bound-left, .st-bound-right{width: 45px;left: 0;}
-  .st-bound-mini {margin-top: 25px;}
-  .st-bottom {top: -26px;
+  #authentication .st-stranger-l {font-size: 4rem; letter-spacing: 0px;}
+  #authentication .st-stranger-i {letter-spacing: 3px;}
+  #authentication .st-stranger-n, .st-stranger-e {letter-spacing: 0px;}
+  #authentication .st-things-p {letter-spacing: 3px;}
+  #authentication .st-bound-left, .st-bound-right{width: 45px;left: 0;}
+  #authentication .st-bound-mini {margin-top: 25px;}
+  #authentication .st-bottom {top: -26px;
     left: 0px;
     letter-spacing: 1px;
   }
-  .st-things-r {
+  #authentication .st-things-r {
     letter-spacing: 2px;
     font-size: 4.5rem;
     right: 0;}

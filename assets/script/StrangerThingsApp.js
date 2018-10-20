@@ -48,6 +48,7 @@ var StrangerThingsApp = function() {
 
     // character profile
     this.characterProfileTextAS = {};    // [ string ]
+    this.characterTraitsAS = {};    // [ string ]
     this.characterProfileImageAS = {};    // [ { src , width , height } ]
     this.characterProfileImageAS[ "ELEVEN" ] = {
         src : "" ,
@@ -413,11 +414,21 @@ StrangerThingsApp.prototype.newCharacterProfile = function( index ) {
                         ( ajaxResponse ) => {
                             console.group( "CONSTRUCTOR .then()" );
 
-                            strangerThingsApp.characterProfileTextAS[ index ] = [];
+                            // character introduction
                             // ajaxResponse.sections[ 0 ].content[ 0 ].text
+                            strangerThingsApp.characterProfileTextAS[ index ] = [];
                             ajaxResponse.sections[ 0 ].content.forEach(
                                 ( content , contentIndex ) => {
                                     strangerThingsApp.characterProfileTextAS[ index ].push( content.text );
+                                }
+                            );
+
+                            // personal traits
+                            // ajaxResponse.sections[ 1 ].content[ 0 ].text
+                            strangerThingsApp.characterTraitsAS[ index ] = [];
+                            ajaxResponse.sections[ 1 ].content.forEach(
+                                ( content , contentIndex ) => {
+                                    strangerThingsApp.characterTraitsAS[ index ].push( content.text );
                                 }
                             );
 

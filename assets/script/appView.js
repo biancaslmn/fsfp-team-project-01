@@ -4,10 +4,39 @@
 viewInitializeUI = function() {
     console.group( "FUNCTION viewInitializeUI()" );
 
-    $( "#login" ).hide();
-    $( "#register" ).hide();
+    $( "#login-form" ).hide();
+    $( "#register-form" ).hide();
+    $( "#authentication" ).hide();
     $( "#authentication-message" ).hide();
     $( "#welcome-message" ).hide();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewShowAuthentication()
+***/
+
+viewShowAuthentication = function() {
+    console.group( "FUNCTION viewShowAuthentication()" );
+
+    $( "#login-form" ).hide();
+    $( "#register-form" ).hide();
+    $( "#authentication" ).fadeIn();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewHideAuthentication()
+***/
+
+viewHideAuthentication = function() {
+    console.group( "FUNCTION viewHideAuthentication()" );
+
+    $( "#login-form" ).hide();
+    $( "#register-form" ).hide();
+    $( "#authentication" ).fadeOut();
 
     console.groupEnd();
 };
@@ -19,7 +48,7 @@ viewInitializeUI = function() {
 viewShowLogin = function() {
     console.group( "FUNCTION viewShowLogin()" );
 
-    $( "#login" ).fadeIn();
+    $( "#login-form" ).fadeIn();
 
     console.groupEnd();
 };
@@ -31,7 +60,7 @@ viewShowLogin = function() {
 viewHideLogin = function() {
     console.group( "FUNCTION viewHideLogin()" );
 
-    $( "#login" ).fadeOut();
+    $( "#login-form" ).hide();
 
     console.groupEnd();
 };
@@ -43,7 +72,7 @@ viewHideLogin = function() {
 viewShowRegister = function() {
     console.group( "FUNCTION viewShowRegister()" );
 
-    $( "#register" ).fadeIn();
+    $( "#register-form" ).fadeIn();
 
     console.groupEnd();
 };
@@ -55,7 +84,7 @@ viewShowRegister = function() {
 viewHideRegister = function() {
     console.group( "FUNCTION viewHideRegister()" );
 
-    $( "#register" ).fadeOut();
+    $( "#register-form" ).hide();
 
     console.groupEnd();
 };

@@ -1,0 +1,106 @@
+
+.st {
+  width: 625px;
+  margin: 2rem auto .2rem auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8rem;
+  font-family: 'ITC Benguiat W01';
+  font-weight: 800;
+  color: #1c0502;
+  text-shadow: -0.05rem -0.05rem 2px #ed2b12,
+    0.05rem -0.05rem 1px #ed2b12,
+    -0.05rem 0.05rem 1px #ed2b12,
+    0.05rem 0.05rem 1px #ed2b12,
+    0 0 15px #630100,
+    0 0 20px #450100;
+  letter-spacing: -1px;
+}
+
+.st p {
+  display: inline-block;
+  margin: 0;
+}
+
+.st-bound {
+  box-shadow: -0.05rem -0.05rem 2px #ed2b12,
+    0.05rem -0.05rem 2px #ed2b12,
+    -0.05rem 0.05rem 2px #ed2b12,
+    0.05rem 0.05rem 2px #ed2b12;
+  height: 5px;
+}
+
+.st-bound-full {
+    width: 100%;
+    margin: auto;
+    margin-bottom: -1.2rem;
+    max-width: 612px;
+    margin-left: 5px;
+}
+
+.st-bound-mini {
+  margin-top: 5.5rem;
+}
+
+.st-bound-left {
+  float: left;
+  width: 123px;
+  position: relative;
+  left: 7px;
+}
+
+.st-bound-right {
+  float: right;
+  width: 123px;
+  left: -0.7rem;
+  position: relative;
+}
+
+.st-bottom {
+    clear: both;
+    top: -78px;
+    position: relative;
+    left: .6rem;
+    letter-spacing: 2px;
+}
+
+.st-drop {
+  line-height: 0;
+  position: relative;
+}
+
+.st-stranger-l {
+    font-size: 8rem;
+    letter-spacing: -7px;
+}
+
+.st-stranger-i {
+  letter-spacing: 0;
+}
+
+.st-stranger-n {
+  letter-spacing: -5px;
+}
+
+.st-stranger-e {
+  letter-spacing: 0;
+}
+
+.st-things-r {
+  font-size: 10.5rem;
+  right: 0.2rem;
+}
+
+.st-things-a{
+  letter-spacing: 2px;
+}
+
+.st-things-p {
+  letter-spacing: -5px;
+}
+
+.st-things-r {
+  letter-spacing: -3px;
+}
+
+

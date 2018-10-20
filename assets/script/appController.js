@@ -46,8 +46,10 @@ controllerLoginAuthenticate = function( eventType , eventTargetId ) {
     console.logValue( "eventTargetId" , eventTargetId );
 
     // get data from login form
-    var loginEmail = $( "#login-email" ).val();
-    var loginPassword = $( "#login-password" ).val();
+    var loginEmail = $( "#email1" ).val();
+    var loginPassword = $( "#password1" ).val();
+    // var loginEmail = $( "#login-email" ).val();
+    // var loginPassword = $( "#login-password" ).val();
     var promise = app.firebaseSignIn( loginEmail , loginPassword );
 
     console.log( "promise" , promise );
@@ -65,9 +67,12 @@ controllerRegisterAuthenticate = function( eventType , eventTargetId ) {
     console.logValue( "eventTargetId" , eventTargetId );
 
     // get data from register form
-    var registerName = $( "#register-name" ).val();
-    var registerEmail = $( "#register-email" ).val();
-    var registerPassword = $( "#register-password" ).val();
+    var registerName = $( "#username" ).val();
+    var registerEmail = $( "#email2" ).val();
+    var registerPassword = $( "#password2" ).val();
+    // var registerName = $( "#register-name" ).val();
+    // var registerEmail = $( "#register-email" ).val();
+    // var registerPassword = $( "#register-password" ).val();
     var promise = app.firebaseCreateUser( registerName , registerEmail , registerPassword );
 
     console.log( "promise" , promise );
@@ -131,6 +136,7 @@ controllerStep = function( eventType , eventTargetId ) {
     }
     // FSA login
     else if ( app.status === APP_STATUS__LOGIN ) {
+        viewShowAuthentication();
         viewHideRegister();
         viewShowLogin();
         app.status = APP_STATUS__LOGIN__WAIT_USER;
@@ -185,7 +191,7 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__LOGIN__WAIT_USER &&
         eventType === "click" &&
-        eventTargetId === "register-link"
+        eventTargetId === "register-form-link"
     ) {
         app.status = APP_STATUS__REGISTER;
     }
@@ -247,7 +253,7 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__REGISTER__WAIT_USER &&
         eventType === "click" &&
-        eventTargetId === "login-link"
+        eventTargetId === "login-form-link"
     ) {
         app.status = APP_STATUS__LOGIN;
     }
@@ -259,8 +265,7 @@ controllerStep = function( eventType , eventTargetId ) {
     else if (
         app.status === APP_STATUS__MESSAGE_WELCOME
     ) {
-        viewHideLogin();
-        viewHideRegister();
+        viewHideAuthentication();
         viewShowWelcomeMessage();
         app.status = APP_STATUS__MESSAGE_WELCOME__WAIT_USER;
     }
@@ -375,8 +380,8 @@ handleReady = function( event ) {
 
     $( "#login-submit" ).on( "click" , handleClickSubmit );
     $( "#register-submit" ).on( "click" , handleClickSubmit );
-    $( "#login-link" ).on( "click" , handleEvent );
-    $( "#register-link" ).on( "click" , handleEvent );
+    $( "#login-form-link" ).on( "click" , handleEvent );
+    $( "#register-form-link" ).on( "click" , handleEvent );
     $( "#authentication-message-button" ).on( "click" , handleEvent );
     // $( "#welcome-message-button" ).on( "click" , handleEvent );
 

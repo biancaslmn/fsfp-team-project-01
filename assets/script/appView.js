@@ -9,6 +9,7 @@ viewInitializeUI = function() {
     $( "#authentication" ).hide();
     $( "#authentication-message" ).hide();
     $( "#welcome-message" ).hide();
+    $( "#game" ).hide();
 
     console.groupEnd();
 };
@@ -154,25 +155,77 @@ viewHideWelcomeMessage = function() {
 };
 
 
-/*** FUNCTION viewHideAuthentication()
-***/
-
-viewHideAuthentication = function() {
-    console.group( "FUNCTION viewHideAuthentication()" );
-
-    $( "#authentication" ).fadeOut();
-
-    console.groupEnd();
-};
-
-
 /*** FUNCTION viewShowCharacterProfile()
 ***/
 
 viewShowCharacterProfile = function() {
     console.group( "FUNCTION viewShowCharacterProfile()" );
 
-    // do something
+    // force a change in body css
+    $( "body" )
+        .css(
+            {
+                "font-family" : "'Times New Roman', Times, serif" ,
+                "font-size" : "18px" ,
+                "color" : "white" ,
+                "background" : "url(assets/images/bg3.jpg) no-repeat" ,
+                "background-size" : "cover" ,
+                "height" : "100vh" ,
+                "line-height" : "50px" ,
+                "margin" : "50px"
+            }
+        );
+
+    $( "element" )
+        .css(
+            {
+                "width" : "100%" ,
+                "height" : "auto" ,
+                "max-height" : "400px" ,
+                "max-width" : "200px" ,
+                "float" : "left"
+            }
+        );
+
+    /*
+    app.characterTraitsAS[ "ELEVEN" ].forEach(
+        ( characterTrait , characterTraitIndex ) => {
+            $( "<p>" )
+                .text( characterTrait )
+                .appendTo( "#eleven-profile-text" );
+        }
+    );
+    app.characterTraitsAS[ "MIKE_WHEELER" ].forEach(
+        ( characterTrait , characterTraitIndex ) => {
+            $( "<p>" )
+                .text( characterTrait )
+                .appendTo( "#mike-profile-text" );
+        }
+    );
+    */
+    $( "<p>" )
+        .text( app.characterTraitsAS[ "ELEVEN" ][0] )
+        .appendTo( "#eleven-profile-text" );
+    $( "<p>" )
+        .text( app.characterTraitsAS[ "MIKE_WHEELER" ][0] )
+        .appendTo( "#mike-profile-text" );
+
+
+    $( "#game" ).show();
+    $( "#accordion" ).accordion();
+    $( "#accordion" ).fadeIn();
+
+    console.groupEnd();
+};
+
+
+/*** FUNCTION viewHideCharacterProfile()
+***/
+
+viewHideCharacterProfile = function() {
+    console.group( "FUNCTION viewHideCharacterProfile()" );
+
+    $( "#accordion" ).fadeOut();
 
     console.groupEnd();
 };

@@ -28,7 +28,6 @@ body {
     display: inline-flex;
     padding: 10px;
     max-width: 450px;
-    float: right;
 }
 
 #game [class*="col-"] {padding: 15px;}
@@ -88,6 +87,9 @@ font-family: 'Times New Roman', Times, serif !important;
 background-image: linear-gradient(#AC010F, black);
 color: white;
 }
+#game .col-xl-9.col-9.col-s-12.container {margin: auto;}
+#game .charactersIntro img{float:left; height: auto;}
+
 
  @media only screen and (min-width: 960px) {
     /* For Desktop: */
@@ -121,7 +123,10 @@ color: white;
   }
   #game .charactersIntro p{width:100%;}
   #game .ui-accordion .ui-accordion-content {padding: 5px; text-align: center;}
+  #game .charactersIntro img {float: none;}
   }
+  /* body     background-size: cover;  ??   background: url(assets/images/bg3.jpg) 0% 0% / cover no-repeat;
+      html padding-bottom: 50px;*/
 
   @media only screen and (max-width: 768px) {
     /* For tablets: */
@@ -137,6 +142,7 @@ color: white;
   #game .col-s-10 {width: 83.33%;}
   #game .col-s-11 {width: 91.66%;}
   #game .col-s-12 {width: 100%;}
-  body #game {margin:0; text-align: center;};
+  body #game {margin:0; text-align: center;}
+  #game .charactersIntro img {float: none;}
     }
 

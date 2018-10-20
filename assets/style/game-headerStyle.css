@@ -14,7 +14,7 @@
     0.05rem 0.05rem 1px #ed2b12,
     0 0 15px #630100,
     0 0 20px #450100;
-  letter-spacing: -1px;
+  letter-spacing: -9px;
 }
 
 #game .st p {
@@ -63,7 +63,7 @@
     clear: both;
     top: 18px;
     position: relative;
-    letter-spacing: 2px;
+    letter-spacing: -7px;
 }
 
 #game .st-drop {
@@ -90,7 +90,7 @@
 
 #game .st-things-r {
   font-size: 4rem;
-  letter-spacing: 2px;
+  letter-spacing: -3px;
 }
 
 #game .st-things-a{

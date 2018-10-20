@@ -169,7 +169,7 @@ viewShowCharacterProfile = function() {
                 "font-family" : "'Times New Roman', Times, serif" ,
                 "font-size" : "18px" ,
                 "color" : "white" ,
-                "background" : "url(assets/images/bg3.jpg) no-repeat" ,
+                "background" : "url(assets\/images\/bg3.jpg) no-repeat" ,
                 "background-size" : "cover" ,
                 "height" : "100vh" ,
                 "line-height" : "50px" ,
